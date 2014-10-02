@@ -14,13 +14,22 @@ html, body {
   margin: 0;
   padding: 0;
 }
+span {
+  display: block;
+  text-align: center;
+}
 
 a {
   color: #00B7FF;
 }
+#down {
+  display: block;
+  float: right;
+}
 #container {
-  width: 700px;
+  width: 500px;
   margin: 0 auto;
+  height: 500px;
 }
 #usersStats {
   text-align: center;
@@ -31,12 +40,14 @@ a {
   overflow-y: scroll;
   max-height:200px;
 }
+#roomMessages p {
+  margin-left: 20px;
+}
 #userMessage {
-  width: 95%;
+  width: 100%;
   border: 10px solid #000;
   height: 50px;
   padding-left: 10px;
-  max-width: 94%;
   font-size: 100%;
 }
 .chatArea {
@@ -51,15 +62,15 @@ a {
 #usersStats p {
   display: inline-block;
 }
-#chat {
-  display: inline-block;
-}
+
+
 #usersInRoom {
   display: inline-block;
   width: 150px;
   min-height: 300px;
   padding-left: 40px;
   vertical-align: bottom;
+  display: none;
 }
 h1 {
   text-align: center;
