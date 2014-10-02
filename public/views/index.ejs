@@ -9,19 +9,85 @@
     <script type="text/javascript" src="./../../javascripts/app.js"></script>
     <script type="text/javascript" src="./../../javascripts/factories.js"></script>
     <script type="text/javascript" src="./../../javascripts/controllers.js"></script>
-    <script type="text/javascript">
-      var socket = io.connect();
-      socket.on('info', function(msg){
-       console.log('received info event and got the following message', msg);
-      });
-      socket.emit('test', { hello: 'world' });
-    </script>
+
   </head>
   <body>
-    <h1>User Index Page</h1>
-    <form action="#">
-      <input name="test" type="text" data-ng-model="test">
-    </form>
-    {{ test }}
+    <div id="container">
+      <div id="earth">
+        <div id="up">
+          <h2>Enter name to go to The Moon</h2>
+          <form action="#">
+            <input type="text">
+            <button>Enter</button>
+          </form>
+        </div>
+        <h1>Earth</h1>
+        <div id="chat">
+          <div class="chatArea">
+            <div id="usersStats">
+              <div>
+                <p id="usersCount"></p>
+              </div>
+            </div>
+            <div id="roomMessages"></div>
+          </div>
+          <form action="#">
+            <input class="inputMessage" id="userMessage" type="text" data-ng-model="test" placeholder="Write message and press 'Enter'">
+          </form>
+        </div>
+        <div id="usersInRoom"></div>
+        <div id="down">
+          <h2>Enter name to go to Limbo</h2>
+          <form action="#">
+            <input type="text">
+            <button>Enter</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      var room = 'limbo';
+      var socket = io.connect();
+
+
+      socket.emit('client:newUserInRoom', {name: room});
+
+      socket.on('server:newUserInRoom', function(data) {
+        var para = document.createElement('p');
+        para.innerHTML = data.connectedUser + ' has entered the room';
+
+        var paraTwo = document.createElement('p');
+        paraTwo.innerHTML =  data.connectedUser;
+
+        document.getElementById('roomMessages').appendChild(para);
+        document.getElementById('usersInRoom').appendChild(paraTwo);
+        document.getElementById('usersCount').innerHTML = Object.keys(data.existingUsers).length + ' people lurking here';
+      });
+
+      socket.on('server:userLeavingRoom', function(data) {
+        var para = document.createElement('p');
+        para.innerHTML = data.disconnectedUser + ' has left the room';
+
+        var element = document.getElementById('roomMessages');
+        element.appendChild(para);
+
+        var content = '';
+        for(i in data.existingUsers) {
+          content += '<p>' + data.existingUsers[i] + '<\/p>';
+        }
+
+        document.getElementById('usersInRoom').innerHTML = content;
+        document.getElementById('usersCount').innerHTML = Object.keys(data.existingUsers).length + ' people lurking here';
+      });
+
+      socket.on('server:existingUsers', function(data) {
+        var content = '';
+        for(i in data) {
+          content += '<p>' + data[i] + '<\/p>';
+        }
+        document.getElementById('usersInRoom').innerHTML = content;
+      });
+    </script>
   </body>
 </html>

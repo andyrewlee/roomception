@@ -1,8 +1,67 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+html, input {
+  font-family:
+  "HelveticaNeue-Light",
+  "Helvetica Neue Light",
+  "Helvetica Neue",
+  Helvetica,
+  Arial,
+  "Lucida Grande",
+  sans-serif;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 a {
   color: #00B7FF;
 }
+#container {
+  width: 700px;
+  margin: 0 auto;
+}
+#usersStats {
+  text-align: center;
+}
+#roomMessages {
+  display: inline-block;
+  width: 500px;
+  overflow-y: scroll;
+  max-height:200px;
+}
+#userMessage {
+  width: 95%;
+  border: 10px solid #000;
+  height: 50px;
+  padding-left: 10px;
+  max-width: 94%;
+  font-size: 100%;
+}
+.chatArea {
+  height: 100%;
+  width: 100%;
+  min-height: 200px;
+  padding-bottom: 60px;
+}
+#usersStats div {
+  display: inline-block;
+}
+#usersStats p {
+  display: inline-block;
+}
+#chat {
+  display: inline-block;
+}
+#usersInRoom {
+  display: inline-block;
+  width: 150px;
+  min-height: 300px;
+  padding-left: 40px;
+  vertical-align: bottom;
+}
+h1 {
+  text-align: center;
+}
+
