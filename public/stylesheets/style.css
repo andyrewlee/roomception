@@ -8,7 +8,6 @@ html, input {
   "Lucida Grande",
   sans-serif;
 }
-
 html, body {
   height: 100%;
   margin: 0;
@@ -18,13 +17,8 @@ span {
   display: block;
   text-align: center;
 }
-
 a {
   color: #00B7FF;
-}
-#down {
-  display: block;
-  float: right;
 }
 #container {
   width: 500px;
@@ -43,10 +37,34 @@ a {
 #roomMessages p {
   margin-left: 20px;
 }
+#up {
+  margin-bottom: 40px;
+}
+#down {
+  margin-top: 40px;
+}
+#up, #down {
+  text-align: center;
+}
+#up input {
+  width: 50%;
+  border: 10px solid #fdfd96;
+  height: 50px;
+  padding-left: 10px;
+  font-size: 100%;
+}
+#down input {
+  width: 50%;
+  border: 10px solid #eee;
+  height: 50px;
+  padding-left: 10px;
+  font-size: 100%;
+}
 #userMessage {
   width: 100%;
-  border: 10px solid #000;
+  border: 10px solid #215E21;
   height: 50px;
+  max-width: 469px;
   padding-left: 10px;
   font-size: 100%;
 }
